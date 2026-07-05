@@ -22,6 +22,7 @@ ARG PLATFORM_VERSION=36
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
+        bash \
         busybox \
         ca-certificates \
         curl \
@@ -71,7 +72,7 @@ HTTPD_PID=$!; \
 while :; do \
     kill -0 \"$HTTPD_PID\" || exit 1; \
     for f in /updates/*.sh; do \
-        [ -f \"$f\" ] && sh \"$f\"; \
+        [ -f \"$f\" ] && bash \"$f\"; \
     done; \
     fdroid update -c; \
     sleep \"$FDROID_UPDATE_INTERVAL\"; \
