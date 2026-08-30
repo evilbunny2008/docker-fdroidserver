@@ -1,13 +1,13 @@
 services:
   fdroid:
-    image: austozi/fdroidserver:latest
-    container_name: fdroid
+    image: ghcr.io/yourusername/fdroidserver:latest
+    container_name: fdroidserver
     restart: unless-stopped
     user: "1000:1000"
     environment:
-      TZ: Europe/London
+      TZ: Australia/Sydney
       FDROID_REPO_ICON: fdroid.png
-      FDROID_UPDATE_INTERVAL: 6h
+      FDROID_UPDATE_INTERVAL: 24h
       FDROID_REPO_URL: https://example.com/fdroid/repo # Change me
       FDROID_REPO_NAME: F-Droid App Store
       FDROID_REPO_DESCRIPTION: An app store for Android devices.
