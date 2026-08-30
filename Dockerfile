@@ -1,6 +1,6 @@
 FROM debian:13-slim
 
-LABEL org.opencontainers.image.authors="evilbunny2008"
+LABEL org.opencontainers.image.authors="evilbunny2008" \
       org.opencontainers.image.source="https://github.com/evilbunny2008/docker-fdroidserver"
 
 ENV DEBIAN_FRONTEND=noninteractive
