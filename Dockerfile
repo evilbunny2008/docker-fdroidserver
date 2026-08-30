@@ -52,8 +52,6 @@ RUN mkdir -p "${ANDROID_SDK_ROOT}/cmdline-tools"; \
     \
     mkdir -p \
         /fdroid \
-        /fdroid/metadata \
-        /fdroid/repo \
         /updates
 
 RUN pip install check-jsonschema --break-system-packages
@@ -75,6 +73,8 @@ HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
 CMD busybox wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1
 
 CMD ["sh", "-ceu", "\
+[ -d /fdroid/metadata ] || mkdir -p /fdroid/metadata; \
+[ -d /fdroid/repo ] || mkdir -p /fdroid/repo; \
 [ -f /fdroid/keystore.p12 ] || fdroid update --create-key; \
 busybox httpd -f -p 8080 -h /fdroid/repo & \
 HTTPD_PID=$!; \
