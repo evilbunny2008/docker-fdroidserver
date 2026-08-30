@@ -1,6 +1,6 @@
 services:
   fdroid:
-    image: ghcr.io/yourusername/fdroidserver:latest
+    image: ghcr.io/evilbunny2008/fdroidserver:latest
     container_name: fdroidserver
     restart: unless-stopped
     user: "1000:1000"
