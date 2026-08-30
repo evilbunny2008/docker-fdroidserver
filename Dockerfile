@@ -52,6 +52,7 @@ RUN mkdir -p "${ANDROID_SDK_ROOT}/cmdline-tools"; \
     \
     mkdir -p \
         /fdroid \
+        /fdroid/metadata \
         /fdroid/repo \
         /updates
 
