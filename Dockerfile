@@ -29,7 +29,8 @@ RUN set -eux; \
         curl \
         fdroidserver \
         openjdk-21-jre-headless \
-        unzip;
+        unzip \
+        pip
 
 RUN sed -i "/^        '8.14.2')/a\\        '9.7.1')  echo 'acd53f1edaf02f1a8ff99879f8a34b302661a057d9b063ae9e35b552f804d20a' ;;" \
            /usr/lib/python3/dist-packages/gradlew-fdroid
@@ -52,9 +53,11 @@ RUN mkdir -p "${ANDROID_SDK_ROOT}/cmdline-tools"; \
     mkdir -p \
         /fdroid \
         /fdroid/repo \
-        /updates; \
-    \
-    chmod -R a+rX "${ANDROID_SDK_ROOT}"; \
+        /updates
+
+RUN pip install check-jsonschema --break-system-packages
+
+RUN chmod -R a+rX "${ANDROID_SDK_ROOT}"; \
     \
     apt-get clean; \
     rm -rf \
