@@ -74,6 +74,7 @@ HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
 CMD busybox wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1
 
 CMD ["sh", "-ceu", "\
+[ -f /fdroid/keystore.p12 ] || fdroid update --create-key; \
 busybox httpd -f -p 8080 -h /fdroid/repo & \
 HTTPD_PID=$!; \
 while :; do \
