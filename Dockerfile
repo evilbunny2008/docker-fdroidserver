@@ -31,6 +31,9 @@ RUN set -eux; \
         openjdk-21-jre-headless \
         unzip; \
     \
+    sed -i "/^        '8.14.2')/a\\        '9.7.1')  echo 'acd53f1edaf02f1a8ff99879f8a34b302661a057d9b063ae9e35b552f804d20a' ;;" \
+    /usr/lib/python3/dist-packages/gradlew-fdroid
+    \
     mkdir -p "${ANDROID_SDK_ROOT}/cmdline-tools"; \
     curl -fsSL \
         "https://dl.google.com/android/repository/commandlinetools-linux-${CMDLINE_TOOLS_VERSION}_latest.zip" \
